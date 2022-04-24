@@ -1,0 +1,15 @@
+.header
+{
+  background: rgba(40, 22, 56, 0.87);
+}
+
+.header_download_btn
+{
+  background: #5bce66;
+  transition: .3s;
+  outline: none !important;
+}
+.header_download_btn:hover
+{
+  background: #449d4c;
+}
