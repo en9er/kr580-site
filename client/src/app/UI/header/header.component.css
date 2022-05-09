@@ -1,7 +1,21 @@
+select {
+  height: 50px;
+  line-height: 50px;
+  font-size: 12pt;
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+
+option{
+  width: 40px;
+}
+
 .header
 {
   background: rgba(40, 22, 56, 0.87);
 }
+
 
 .header_download_btn
 {
@@ -12,4 +26,14 @@
 .header_download_btn:hover
 {
   background: #449d4c;
+}
+
+.header_lang {
+  font-size: 20px;
+  color: gray;
+}
+
+.header_lang_option {
+  font-size: 20px;
+  color: gray;
 }
