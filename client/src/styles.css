@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 body
 {
-  background: #1a112d;
+  background: #341b67;
   min-height: 100vh;
+  margin: 0 auto;
 }
 .background
 {
@@ -12,7 +13,7 @@ body
   left: 0;
   top: 0;
   filter: opacity(0.1);
-  background: url("assets/res/img/typing.gif") no-repeat;
+  /*background: url("assets/res/img/typing.gif") no-repeat;*/
   background-size: 100%;
   z-index: -1;
 }

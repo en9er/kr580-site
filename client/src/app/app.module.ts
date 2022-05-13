@@ -9,6 +9,7 @@ import { SocialMediaComponent } from './UI/social-media/social-media.component';
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import { InfoBlockComponent } from './UI/info-block/info-block.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import {TranslateHttpLoader} from "@ngx-translate/http-loader";
     MainpageComponent,
     HeaderComponent,
     SocialMediaComponent,
+    InfoBlockComponent,
   ],
   imports: [
     BrowserModule,

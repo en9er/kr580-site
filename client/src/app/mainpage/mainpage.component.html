@@ -1,23 +1,18 @@
 <app-header></app-header>
 <div class="mainpage_content">
-  <div class="container">
-    <div class="d-flex flex-column align-items-center mainpage_title">
-      <h1 class="text-white mainpage_title">{{'home.main-title' | translate}}</h1>
-      <div class="d-flex align-items-center justify-content-center mainpage_get mt-2">
-        <div class="mainpage_get_item">
-          <div class="text-white mainpage_get_title">
-            Windows prebuilt binaries
-          </div>
-          <button class="btn btn-success w-50 mainpage_get_button">Download</button>
-        </div>
-        <div class="mainpage_get_item">
-          <div class="text-white mainpage_get_title">
-            Linux prebuilt binaries
-          </div>
-          <button class="btn btn-success w-50 mainpage_get_button">Download</button>
-        </div>
+
+  <div class="d-flex flex-column align-items-center mainpage_title">
+    <div class="d-flex align-items-center justify-content-center mainpage_get mt-1">
+      <div class="mainpage_get_item">
+        <h1 class="text-white mainpage_title">{{'home.main-title' | translate}}</h1>
+        <button class="btn btn-success w-50 mainpage_get_button">{{'header.download' | translate}}</button>
+        <a class="drag_image" href="#info"><img src="assets/res/img/down_arrows.svg"></a>
       </div>
+
     </div>
-    <app-social-media style="position: absolute; right: 0; bottom: 0"></app-social-media>
   </div>
+  <app-info-block id="info" header="Syntax Higlight" desc="lorem ipsum dalar maalr jksdlkj asdlkjlaskdj lfkjasldkjflkjlkj kjalksj lkjs lkd jlskj dlkj alsk" [alignLeft]="true" imageSrc="assets/res/img/syntax-highlight.png" animationClass="slideInRight"></app-info-block>
+  <app-info-block header="Syntax Higlight" desc="lorem ipsum dalar maalr jksdlkj asdlkjlaskdj lfkjasldkjflkjlkj kjalksj lkjs lkd jlskj dlkj alsk" [alignLeft]="false" imageSrc="assets/res/img/syntax-highlight.png" animationClass="slideInLeft"></app-info-block>
+  <app-info-block header="Syntax Higlight" desc="lorem ipsum dalar maalr jksdlkj asdlkjlaskdj lfkjasldkjflkjlkj kjalksj lkjs lkd jlskj dlkj alsk" [alignLeft]="true" imageSrc="assets/res/img/syntax-highlight.png" animationClass="slideInRight"></app-info-block>
+  <app-info-block header="Syntax Higlight" desc="lorem ipsum dalar maalr jksdlkj asdlkjlaskdj lfkjasldkjflkjlkj kjalksj lkjs lkd jlskj dlkj alsk" [alignLeft]="false" imageSrc="assets/res/img/syntax-highlight.png" animationClass="slideInLeft"></app-info-block>
 </div>

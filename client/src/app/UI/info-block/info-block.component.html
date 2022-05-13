@@ -1,0 +1,13 @@
+<div class="container divider bg-dark"></div>
+<div class="container my-5 wow {{animationClass}} " data-wow-delay="300ms">
+  <div class="row">
+    <div class="info-block d-flex">
+      <img [src]="imageSrc" *ngIf="alignLeft" class="info-block-image col-5">
+      <div class="info-block-text col-6 mx-5">
+        <div class="info-block-title h3 text-white"><b>{{header}}</b></div>
+        <div class="info-block-desc h4 text-white">{{desc}}</div>
+      </div>
+      <img [src]="imageSrc" *ngIf="!alignLeft" class="info-block-image col-5">
+    </div>
+  </div>
+</div>
