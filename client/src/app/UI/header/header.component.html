@@ -12,6 +12,7 @@
         <select (change)="selectLang($event.target)" class="header_lang mx-4">
           <option class="header_lang_option" *ngFor="let lang of supportLanguages" value="{{lang}}"  [selected]="lang === currentLang()"><img src="assets/res/img/{{lang}}-lang.png">{{lang}}</option>
         </select>
+        <a *ngIf="isLoggedIn()" href="http://localhost" class="btn btn-danger logout" (click)="onLogOut()">Logout</a>
       </div>
     </div>
   </div>

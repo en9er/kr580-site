@@ -1,14 +1,27 @@
-const http = require('http');
+const express = require('express')
+const mongoose = require('mongoose')
+const cors = require('cors')
+const cookieParser = require('cookie-parser')
 
-const hostname = '127.0.0.1';
-const port = 4000;
+mongoose.connect('mongodb://localhost/emulator_db', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, () => {
+  console.log('connected to the database')
+})
 
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello World');
-});
+const routes = require('./routes/routes')
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
-});
+app = express()
+
+app.use(cookieParser())
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost']
+}))
+
+app.use(express.json())
+
+app.use('/api', routes)
+
+app.listen(8000)

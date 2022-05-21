@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TranslatePageService} from "../../services/translate.service";
+import {AuthService} from "../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,8 @@ import {TranslatePageService} from "../../services/translate.service";
 })
 export class HeaderComponent implements OnInit {
   public supportLanguages;
-  constructor(private translateService: TranslatePageService) {
+  loggedIn = false;
+  constructor(private translateService: TranslatePageService, private authService: AuthService, private router: Router) {
     this.supportLanguages = translateService.supportLanguages;
   }
 
@@ -18,12 +21,20 @@ export class HeaderComponent implements OnInit {
   onLangChange(lang: string){
     this.translateService.switchLanguage(lang)
   }
-
   selectLang(target: any) {
     this.translateService.switchLanguage(target.value)
   }
 
+  isLoggedIn()
+  {
+    return this.authService.loggedIn()
+  }
   currentLang():string{
     return this.translateService.currentLang();
+  }
+
+  onLogOut() {
+    this.authService.logout()
+    this.router.navigate(['../'])
   }
 }
