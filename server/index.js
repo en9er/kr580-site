@@ -1,14 +1,6 @@
 const express = require('express')
-const mongoose = require('mongoose')
 const cors = require('cors')
 const cookieParser = require('cookie-parser')
-
-mongoose.connect('mongodb://localhost/emulator_db', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}, () => {
-  console.log('connected to the database')
-})
 
 const routes = require('./routes/routes')
 
@@ -19,9 +11,10 @@ app.use(cors({
   credentials: true,
   origin: ['http://localhost']
 }))
-
+require('dotenv').config();
 app.use(express.json())
 
 app.use('/api', routes)
 
 app.listen(8000)
+console.log("server is listening on http://localhost:8000")

@@ -4,21 +4,18 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 
 router.post('/login', async (req, res) => {
-  const user = await User.findOne({login: req.body.login})
-
-  if (!user) {
+  if (req.body.login !== process.env.admin_login) {
     return res.status(404).send({
       message: 'user not found'
     })
   }
-
-  if (!await bcrypt.compare(req.body.password, user.password)) {
+  if (req.body.password !== process.env.admin_password) {
     return res.status(400).send({
       message: 'invalid credentials'
     })
   }
 
-  const token = jwt.sign({_id: user._id}, "secret")
+  const token = jwt.sign({_id: process.env.admin_id}, "secret")
 
   res.cookie('jwt', token, {
     httpOnly: true,
@@ -28,30 +25,6 @@ router.post('/login', async (req, res) => {
   res.send({
     message: 'success'
   })
-})
-
-router.get('/user', async (req, res) => {
-  try {
-    const cookie = req.cookies['jwt']
-    console.log(cookie)
-    const claims = jwt.verify(cookie, 'secret')
-
-    if (!claims) {
-      return res.status(401).send({
-        message: 'unauthenticated'
-      })
-    }
-
-    const user = await User.findOne({_id: claims._id})
-
-    const {password, ...data} = await user.toJSON()
-
-    res.send(data)
-  } catch (e) {
-    return res.status(401).send({
-      message: 'unauthenticated'
-    })
-  }
 })
 
 router.post('/logout', (req, res) => {

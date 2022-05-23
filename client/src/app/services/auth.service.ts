@@ -8,7 +8,6 @@ import {Router} from "@angular/router";
 })
 export class AuthService {
   loginUrl='http://localhost:8000/api/login';
-  userUrl='http://localhost:8000/api/user';
   logoutUrl='http://localhost:8000/api/logout';
   httpOpts = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
