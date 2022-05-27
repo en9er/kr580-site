@@ -5,3 +5,4 @@
     - [User Interface](./user-interface.md)
     - [Menu bar](./menu-bar.md)
     - [Saving and Loading](./saving-and-loading.md)
+    - [Built in procedures](./built-in-procedures.md)
