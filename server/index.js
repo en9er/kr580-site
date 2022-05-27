@@ -9,7 +9,7 @@ app = express()
 app.use(cookieParser())
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost']
+  origin: ['http://localhost', 'http://localhost:4200']
 }))
 require('dotenv').config();
 app.use(express.json())

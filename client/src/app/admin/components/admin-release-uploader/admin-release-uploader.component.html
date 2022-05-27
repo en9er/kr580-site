@@ -1,0 +1,26 @@
+<div class="wrapper text-white d-flex flex-column justify-content-start p-5" style="height: 100%">
+  <h2>New release</h2>
+  <div class="file-upload d-flex flex-column">
+    <input class="my-2"
+      type="text"
+      name="release_name"
+      [(ngModel)]="release_name"
+    />
+    <input class="my-2"
+      type="file"
+      name="file"
+      ng2FileSelect
+      [uploader]="uploader"
+      [accept]="allowedTypes"
+    />
+    <div class="my-1">Allowed types: {{allowedFileExtentions}}</div>
+    <div class="text-danger">{{errorMsg}}</div>
+    <button
+      type="button"
+      (click)=onSubmit()
+      [disabled]="!uploader.getNotUploadedItems().length || release_name.length == 0"
+    >
+      Upload
+    </button>
+  </div>
+</div>

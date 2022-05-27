@@ -10,23 +10,28 @@ import {AuthService} from "../services/auth.service";
 })
 
 export class LoginComponent {
-  responseData: any;
+  response: boolean;
   form = new FormGroup({
     login: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required),
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) {
+    this.response = true;
+  }
 
   submitForm() {
+    console.log(this.form.value)
     if (this.form.valid) {
-      this.authService.login(this.form.value)
-        .subscribe(
+      this.authService.login(this.form.value).subscribe(
           data => {
+            console.log(data)
             localStorage.setItem('token', data.toString());
             this.router.navigate(['/admin']);
           },
-          error => { }
+          error => {
+            this.response = false
+          }
         );
     }
   }

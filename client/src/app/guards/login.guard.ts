@@ -25,7 +25,7 @@ export class LoginGuard implements CanActivate, CanDeactivate<unknown> {
       return true;
     }
     else {
-      this.router.navigate([""])
+      this.router.navigate([":4200"])
       return false
     }
   }

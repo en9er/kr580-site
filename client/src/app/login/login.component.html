@@ -1,37 +1,22 @@
-<form (ngSubmit)="submitForm()" [formGroup]="form" autocomplete="off">
-  <div style="display: flex; height: 500px; justify-content: center">
-    <mat-card class="form-container">
-      <mat-card-title>Login</mat-card-title>
-
-      <!-- Username -->
-      <div>
-        <mat-form-field>
-          <mat-label>Username</mat-label>
-          <input
-            name="login"
-            matInput
-            formControlName="login"
-          />
-        </mat-form-field>
+<div style="position: absolute; top: 25%; left: 0; width: 100%">
+  <div class="d-flex align-items-center justify-content-center flex-column">
+    <h2 class="text-white">Login</h2>
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <label class="text-white" for="login">Username</label>
+        <input type="text" id="login" formControlName="login" class="form-control" required/>
       </div>
-      <!-- /Username -->
-
-      <!-- Password -->
-      <div>
-        <mat-form-field>
-          <mat-label>Password</mat-label>
-          <input
-            matInput
-            type="password"
-            formControlName="password"
-          />
-        </mat-form-field>
+      <div class="form-group">
+        <label class="text-white" for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control" required />
       </div>
-      <!-- /Password -->
-
-      <div>
-        <button type="submit" mat-raised-button color="primary">Login</button>
+      <div class="form-group my-2">
+        <div *ngIf="response == false" class="text-danger">Login error: incorrect login or password</div>
+        <button class="btn btn-primary text-right">
+          Login
+        </button>
       </div>
-    </mat-card>
+    </form>
+
   </div>
-</form>
+</div>
