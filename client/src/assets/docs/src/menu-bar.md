@@ -18,7 +18,7 @@ Here user can reset emulator by clicking on `New` button, or open previously sav
 
 Emulator supports saving in two differend formats. Firstly it can save source code from [Editor](user-interface.md#editor) by clicking `Save as *.asm`. It saves assembler mnemonics as .asm file on your file system. Secondly in can save machine code (memory dump) from [Memory](user-interface.md#memory) by clicking `Save as *.obj`. This approach saves raw bytes from memory to .obj file on your file system.
 
-You can load both of this file formats identically when opening files as described above. For more details see [Saving and Loading](./saving-and-loading.md).
+You can load both of this file formats identically when opening files as described above. For more details see [Saving and Loading](saving-and-loading.md).
 
 Also you can exit from the emulator by clicking at `Exit` button at the very bottom.
 

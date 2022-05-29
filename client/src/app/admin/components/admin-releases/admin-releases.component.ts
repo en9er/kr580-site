@@ -24,7 +24,10 @@ export class AdminReleasesComponent implements OnInit {
   }
 
   deleteRelease(name: string){
-    this.http.get<any>("http://localhost:8000/api/delete-release?name=" + name).subscribe(res => {
+    const data = {
+      token: localStorage.getItem("token")
+    }
+    this.http.post<any>("http://localhost:8000/api/delete-release?name=" + name, data).subscribe(res => {
       console.log(res)
       this.reloadComponent();
     })

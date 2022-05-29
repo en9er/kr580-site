@@ -25,8 +25,7 @@ export class LoginComponent {
     if (this.form.valid) {
       this.authService.login(this.form.value).subscribe(
           data => {
-            console.log(data)
-            localStorage.setItem('token', data.toString());
+            localStorage.setItem('token', JSON.parse(JSON.stringify(data.body))["token"]);
             this.router.navigate(['/admin']);
           },
           error => {

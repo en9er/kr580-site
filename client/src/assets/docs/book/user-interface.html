@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Menu bar - KR580 emulator</title>
+        <title>User Interface - KR580 emulator</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -75,7 +75,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="emulator.html"><strong aria-hidden="true">2.</strong> Emulator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="user-interface.html"><strong aria-hidden="true">2.1.</strong> User Interface</a></li><li class="chapter-item expanded "><a href="menu-bar.html" class="active"><strong aria-hidden="true">2.2.</strong> Menu bar</a></li><li class="chapter-item expanded "><a href="saving-and-loading.html"><strong aria-hidden="true">2.3.</strong> Saving and Loading</a></li><li class="chapter-item expanded "><a href="built-in-procedures.html"><strong aria-hidden="true">2.4.</strong> Built in procedures</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="introduction.html"><strong aria-hidden="true">1.</strong> Introduction</a></li><li class="chapter-item expanded "><a href="emulator.html"><strong aria-hidden="true">2.</strong> Emulator</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="user-interface.html" class="active"><strong aria-hidden="true">2.1.</strong> User Interface</a></li><li class="chapter-item expanded "><a href="menu-bar.html"><strong aria-hidden="true">2.2.</strong> Menu bar</a></li><li class="chapter-item expanded "><a href="saving-and-loading.html"><strong aria-hidden="true">2.3.</strong> Saving and Loading</a></li><li class="chapter-item expanded "><a href="built-in-procedures.html"><strong aria-hidden="true">2.4.</strong> Built in procedures</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -134,39 +134,53 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="menu-bar"><a class="header" href="#menu-bar">Menu bar</a></h1>
-<p>Menu bar is located at the very top of the program as shown at picture below:</p>
-<p><img src="res/emulator/user-interface/menu-bar.png" alt="Menu bar" /></p>
-<p>It contains 4 items:</p>
-<ul>
-<li><a href="#file">File</a></li>
-<li><a href="#edit">Edit</a></li>
-<li><a href="#view">View</a></li>
-<li><a href="#help">Help</a></li>
-</ul>
-<h2 id="file"><a class="header" href="#file">File</a></h2>
-<p><img src="res/emulator/user-interface/menu-bar-file.png" alt="File item" title="File item" /></p>
-<p>Here user can reset emulator by clicking on <code>New</code> button, or open previously saved data from file by clicking on <code>Open</code> button.</p>
-<p>Emulator supports saving in two differend formats. Firstly it can save source code from <a href="user-interface.html#editor">Editor</a> by clicking <code>Save as *.asm</code>. It saves assembler mnemonics as .asm file on your file system. Secondly in can save machine code (memory dump) from <a href="user-interface.html#memory">Memory</a> by clicking <code>Save as *.obj</code>. This approach saves raw bytes from memory to .obj file on your file system.</p>
-<p>You can load both of this file formats identically when opening files as described above. For more details see <a href="./saving-and-loading.html">Saving and Loading</a>.</p>
-<p>Also you can exit from the emulator by clicking at <code>Exit</code> button at the very bottom.</p>
-<h2 id="edit"><a class="header" href="#edit">Edit</a></h2>
-<p><img src="res/emulator/user-interface/menu-bar-edit.png" alt="Edit item" title="Edit item" /></p>
-<p>Emulator supports all common editing features as well as hot-keys for them. All of them are illustrated at the picture above.</p>
-<h2 id="view"><a class="header" href="#view">View</a></h2>
-<p><img src="res/emulator/user-interface/menu-bar-view.png" alt="View item" title="View item" /></p>
-<p>In the emulator you can close any of the windows to create your own custom layout that you are comfortable to work with. To close the window click at the 'X' button at top-right corner of the window. To open any window back you use this menu bar item.</p>
-<h2 id="help"><a class="header" href="#help">Help</a></h2>
-<p>me</p>
+                        <h1 id="user-interface"><a class="header" href="#user-interface">User Interface</a></h1>
+<h2 id="toolbar"><a class="header" href="#toolbar">Toolbar</a></h2>
+<p><img src="res/emulator/toolbarpng.png" alt="Toolbar" title="Toolbar" /></p>
+<p>Tool bar has key buttons to interact with emulator. To assemble source code from <a href="./user-interface.html#editor">Editor</a> window into machine code click <code>Assemble</code> button. You can see assembled code in <a href="./user-interface.html#memory">Memory</a> window. To translate machine code from <a href="./user-interface.html#memory">Memory</a> to source code click <code>Disassemble</code> button. Disassembled mnemonics will appear in <a href="./user-interface.html#editor">Editor</a> window. </p>
+<p>Emulator support execution of the program step by step. To execute instruction pointed by <a href="https://en.wikipedia.org/wiki/Program_counter">program counter</a> click <code>Step</code> button. It will execute the instruction and increment program counter automatically.</p>
+<p>To execute whole program click <code>Run</code> button. It will execute instruction one by one until it reaches <em>RST1</em> instruction.</p>
+<p>To prematurely stop execution of running program click <code>Stop</code> button.</p>
+<p>To reset <a href="https://en.wikipedia.org/wiki/Program_counter">PC</a> and <a href="https://en.wikipedia.org/wiki/Stack_register">SP</a> to its initial values click <code>Reset</code> button. In this particular case PC will be initialized to 0x0800 and SP will be initialized to 0x0BB0. </p>
+<h2 id="memory"><a class="header" href="#memory">Memory</a></h2>
+<p><img src="res/emulator/memory.png" alt="Memory" title="Memory" /></p>
+<p>This window contains bytes of memory space from 0x0800 to 0x0B8F. This windos shows only user memory range. In <code>UMPK 80</code> user memory space starts from 0x0800 and ends at 0x0B8F.</p>
+<p>Also on the right side of memory window corresponding assembler mnemonics are shown for you to easy match it with source code. If specific byte is not a valid instruction mnemonic is not shown.</p>
+<h2 id="stack"><a class="header" href="#stack">Stack</a></h2>
+<p><img src="res/emulator/stack.png" alt="Stack" title="Stack" /></p>
+<p>Stack is a stack data structure that stores information about the active subroutines of a computer program. This kind of stack is also known as an execution stack, program stack, control stack, run-time stack, or machine stack, and is often shortened to just &quot;the stack&quot;. </p>
+<p>To push data onto the stack use <code>PUSH RR</code> instruction. That instruction will push RR register pair to address pointer by SP and decrement SP by two automatically. To pop data from the stack use <code>POP RR</code> instruction. That instruction will increment SP by two and put data from top of the stack to RR register pair. For more information see <a href="./ISA.html#push">PUSH</a> and <a href="./ISA.html#pop">POP</a></p>
+<p>In UMPK 80 stack memory range starts at 0x0BB0 and ends at 0x0B80. This memory range is shown in this window. <strong>Notice that stack grows downwards!</strong></p>
+<h2 id="editor"><a class="header" href="#editor">Editor</a></h2>
+<p><img src="res/emulator/editor.png" alt="Editor" title="Editor" /></p>
+<p>This window is simple text editor for source code in assembler language. It supports highlighting of keywords and built in registers. This code is gonna be assembled when clicking <code>Assemble</code> button from [Toolbar] described above.</p>
+<h2 id="stand-tools"><a class="header" href="#stand-tools">Stand tools</a></h2>
+<p><img src="res/emulator/stand-tools.png" alt="Stand tools" title="Stand tools" /></p>
+<p>This window represents <em>UMPK 80</em> built in tools like display, value of <em>OUT 5</em> port and input for <em>IN 5</em> port.</p>
+<h2 id="registers"><a class="header" href="#registers">Registers</a></h2>
+<p><img src="res/emulator/registers.png" alt="Registers" title="Registers" /></p>
+<p>The processor has seven 8-bit registers (A, B, C, D, E, H, and L), where A is the primary 8-bit accumulator. The other six registers can be used as either individual 8-bit registers or in three 16-bit register pairs (BC, DE, and HL, referred to as B, D and H in Intel documents) depending on the particular instruction. Some instructions also enable the HL register pair to be used as a (limited) 16-bit accumulator. A pseudo-register M, which refers to the dereferenced memory location pointed to by HL, can be used almost anywhere other registers can be used. </p>
+<p>The processor maintains internal flag bits (a status register), which indicate the results of arithmetic and logical instructions. Only certain instructions affect the flags. </p>
+<table><thead><tr><th>Flags:</th></tr></thead><tbody>
+<tr><td>Sign (S), set if the result is negative.</td></tr>
+<tr><td>Zero (Z), set if the result is zero.</td></tr>
+<tr><td>Parity (P), set if the number of 1 bits in the result is even.</td></tr>
+<tr><td>Carry (C), set if the last addition operation resulted in a carry or if the last subtraction operation required a borrow</td></tr>
+<tr><td>Auxiliary carry (AC or H), used for binary-coded decimal arithmetic (BCD).</td></tr>
+<tr><td>The carry bit can be set or complemented by specific instructions. Conditional-branch instructions test the various flag status bits. The flags can be copied as a group to the accumulator. The A accumulator and the flags together are called the PSW register, or program status word.</td></tr>
+</tbody></table>
+<h2 id="ports"><a class="header" href="#ports">Ports</a></h2>
+<p><img src="res/emulator/ports.png" alt="Ports" title="Ports" /></p>
+<p>The 8080 supports up to 256[16] input/output (I/O) ports, accessed via dedicated I/O instructions taking port addresses as operands. This I/O mapping scheme is regarded as an advantage, as it frees up the processor's limited address space. Many CPU architectures instead use so-called memory-mapped I/O (MMIO), in which a common address space is used for both RAM and peripheral chips. This removes the need for dedicated I/O instructions, although a drawback in such designs may be that special hardware must be used to insert wait states, as peripherals are often slower than memory. However, in some simple 8080 computers, I/O is indeed addressed as if they were memory cells, &quot;memory-mapped&quot;, leaving the I/O commands unused. I/O addressing can also sometimes employ the fact that the processor outputs the same 8-bit port address to both the lower and the higher address byte (i.e., IN 05h would put the address 0505h on the 16-bit address bus).</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="user-interface.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="emulator.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
-                            <a rel="next" href="saving-and-loading.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="menu-bar.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -175,10 +189,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="user-interface.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="emulator.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
-                    <a rel="next" href="saving-and-loading.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next" href="menu-bar.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>

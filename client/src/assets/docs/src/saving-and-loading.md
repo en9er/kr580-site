@@ -2,7 +2,7 @@
 
 ## Saving
 
-![Saving and Loading](./res/emulator/saving-and-loading.png "Saving and Loading");
+![Saving and Loading](res/emulator/saving-and-loading.png "Saving and Loading");
 
 You can save data in two different ways:
 1. Save source code
@@ -10,7 +10,7 @@ You can save data in two different ways:
 
 By clicking `Save as *.asm` you can save **source** code from [Editor](user-interface.md#editor) window as .asm file. When you click `Save as *.asm` window shown below will pop up.
 
-![Save pop-up](./res/emulator/save-pop-up.png)
+![Save pop-up](res/emulator/save-pop-up.png)
 
 In this pop-up window you can choose file location and file name to save it in your file system.
 

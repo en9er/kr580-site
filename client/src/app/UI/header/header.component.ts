@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(localStorage.getItem("token"))
   }
 
   onLangChange(lang: string){
@@ -27,14 +28,16 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn()
   {
-    return this.authService.loggedIn()
+    return localStorage.getItem("token") !== null
   }
+
   currentLang():string{
     return this.translateService.currentLang();
   }
 
   onLogOut() {
-    this.authService.logout()
-    this.router.navigate(['../'])
+    localStorage.removeItem("token")
+    this.authService.logout().subscribe()
+    //this.router.navigate(['../'])
   }
 }

@@ -13,28 +13,25 @@ import {AuthService} from "../services/auth.service";
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate, CanDeactivate<unknown> {
+export class AuthGuard implements CanActivate {
   status = 401;
   constructor(private authService: AuthService, private router: Router) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (localStorage.getItem('token') === null){
-      this.router.navigate(["login"]);
-      return false;
-    }
-    else {
-      return true;
-    }
-
-  }
-  canDeactivate(
-    component: unknown,
-    currentRoute: ActivatedRouteSnapshot,
-    currentState: RouterStateSnapshot,
-    nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authService.loggedIn();
+    return new Promise<boolean>((resolve, reject) => {
+      this.authService.isAdmin().subscribe(res => {
+        if(JSON.parse(JSON.stringify(res.body))["message"] === "true")
+        {
+          resolve(true)
+        }
+        else{
+          this.router.navigate(["login"]);
+          resolve(false)
+        }
+      })
+    })
   }
 
 }

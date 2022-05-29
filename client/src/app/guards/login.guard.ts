@@ -20,14 +20,18 @@ export class LoginGuard implements CanActivate, CanDeactivate<unknown> {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.authService.loggedIn() === false)
-    {
-      return true;
-    }
-    else {
-      this.router.navigate([":4200"])
-      return false
-    }
+    return new Promise<boolean>((resolve, reject) => {
+      this.authService.isAdmin().subscribe(res => {
+        if(JSON.parse(JSON.stringify(res.body))["message"] === "true")
+        {
+          this.router.navigate([""]);
+          resolve(false)
+        }
+        else{
+          resolve(true)
+        }
+      })
+    })
   }
   canDeactivate(
     component: unknown,

@@ -2,7 +2,7 @@ const router = require('express').Router()
 const jwt = require('jsonwebtoken')
 const fs = require("fs")
 multer = require('multer')
-
+let currentToken = ""
 const PATH = '../shared/releases';
 let storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -16,8 +16,17 @@ let upload = multer({
   storage: storage
 });
 
+function checkToken(token){
+  return token === currentToken
+}
+
 router.post('/upload-release', upload.single('file'), function (req, res) {
-  console.log(req.file)
+  if(!checkToken(req.cookies["jwt"]))
+  {
+    return res.status(200).send({
+      message: "You dont have permissions to do this, mr. Hacker"
+    })
+  }
   if (!req.file) {
     return res.send({
       success: false
@@ -30,8 +39,6 @@ router.post('/upload-release', upload.single('file'), function (req, res) {
 });
 
 router.get('/releases', function (req, res){
-  console.log("releases")
-  //files = fs.readdirSync(PATH)
   let files = []
   fs.readdir(PATH, function(err, files){
     files = files.map(function (fileName) {
@@ -55,7 +62,16 @@ router.get('/download-release',function(req,res,next){
       next(err);}
   })
 })
-router.get('/delete-release', function (req, res){
+router.post('/delete-release', function (req, res){
+  console.log(currentToken)
+  if(!checkToken(req.body.token))
+  {
+    return res.status(200).send({
+      message: "You dont have permissions to do this, mr. Hacker"
+    })
+  }
+
+
   let res_path = PATH + "/" + req.query["name"];
   console.log(res_path)
   if(fs.existsSync(res_path))
@@ -84,25 +100,31 @@ router.post('/login', async (req, res) => {
       message: 'invalid credentials'
     })
   }
-
   const token = jwt.sign({_id: process.env.admin_id}, "secret")
-
+  currentToken = token
   res.cookie('jwt', token, {
     httpOnly: true,
     maxAge: 24 * 60 * 60 * 1000 // 1 day
   })
 
   res.send({
-    message: 'success'
+    token
   })
 })
 
 router.post('/logout', (req, res) => {
+  console.log("delete cookie")
+  currentToken = ""
   res.cookie('jwt', '', {maxAge: 0})
-
   res.send({
     message: 'success'
   })
 })
-
+router.post('/isAdmin', (req, res) => {
+  console.log(req.cookies["jwt"])
+  console.log(currentToken)
+  return res.status(200).send({
+      message: checkToken(req.cookies["jwt"]).toString()
+    })
+})
 module.exports = router;
