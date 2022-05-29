@@ -5,6 +5,7 @@ import {MainpageComponent} from "./mainpage/mainpage.component";
 import {AuthGuard} from "./guards/auth.guard";
 import {LoginComponent} from "./login/login.component";
 import {LoginGuard} from "./guards/login.guard";
+import {DownloadPageComponent} from "./download-page/download-page.component";
 
 const routes: Routes = [
   {path: '', component: MainpageComponent},
@@ -19,6 +20,10 @@ const routes: Routes = [
     component: LoginComponent,
     canActivate: [LoginGuard],
     canDeactivate: [LoginGuard]
+  },
+  {
+    path: 'download',
+    component: DownloadPageComponent
   },
   {
     path: "**", component: NotFoundComponent

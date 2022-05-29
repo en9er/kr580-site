@@ -8,7 +8,7 @@
       </ul>
 
       <div class="float-right">
-        <button type="button" class="btn header_download_btn">{{'header.download' | translate }}</button>
+        <a *ngIf="router.url !== '/download'" href="http://localhost/download" type="button" class="btn header_download_btn">{{'header.download' | translate }}</a>
         <select (change)="selectLang($event.target)" class="header_lang mx-4">
           <option class="header_lang_option" *ngFor="let lang of supportLanguages" value="{{lang}}"  [selected]="lang === currentLang()"><img src="assets/res/img/{{lang}}-lang.png">{{lang}}</option>
         </select>

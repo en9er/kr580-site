@@ -49,7 +49,12 @@ router.get('/releases', function (req, res){
     })
   });
 })
-
+router.get('/download-release',function(req,res,next){
+  res.download(PATH + "/" + req.query["release"],function(err){
+    if(err){
+      next(err);}
+  })
+})
 router.get('/delete-release', function (req, res){
   let res_path = PATH + "/" + req.query["name"];
   console.log(res_path)

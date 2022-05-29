@@ -21,6 +21,7 @@
     "@angular/router": "~13.1.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "file-saver": "^2.0.5",
     "ng2-file-upload": "^1.4.0",
     "ngx-toastr": "^14.3.0",
     "rxjs": "~7.4.0",
