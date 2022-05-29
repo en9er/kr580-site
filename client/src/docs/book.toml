@@ -1,0 +1,6 @@
+[book]
+authors = ["Kamil Kerimov"]
+language = "en"
+multilingual = false
+src = "src"
+title = "KR580 emulator"
