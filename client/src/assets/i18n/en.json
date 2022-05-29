@@ -2,7 +2,8 @@
   "header": {
     "title": "Home",
     "download": "Download",
-    "roadmap": "History of changes"
+    "roadmap": "History of changes",
+    "docs": "Docs"
   },
   "home": {
     "main-title": "KR580 is the best emulator of our time"
